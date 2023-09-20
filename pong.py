@@ -31,7 +31,7 @@ def draw(win, paddles):
     for paddle in paddles:
         paddle.draw_p(win)
 
-    pygame.display.update
+    pygame.display.update()
 
 
 
