@@ -1,7 +1,7 @@
 import pygame
 import random
-pygame.init
-pygame.font.init
+
+pygame.init()
 
 
 WIDTH = 1000
@@ -14,7 +14,7 @@ PADDLE_HEIGHT = 100
 WHITE = (255,255,255)
 BLACK = (0,0,0)
 BALL_RADIUS = 8
-SCORE_FONT = pygame.font.SysFont("Arial", 50,bold=False,italic=False)
+SCORE_FONT = pygame.font.SysFont(name="Arial", size=50)
 Player1_Score = 0
 Player2_Score = 0
 
@@ -46,7 +46,7 @@ class Ball:
         self.y = y
         self.radius = radius
         self.x_vel = self.MAX_VEL
-        self.y_vel = self.MAX_VEL - random.randint(7)
+        self.y_vel = self.MAX_VEL - random.randint(0,7)
 
     def draw_b(self,win):
         pygame.draw.circle(win,self.COLOR,(self.x,self.y),self.radius)
@@ -89,20 +89,20 @@ def handle_collision(ball,left_paddle, right_paddle):
         if ball.y >= left_paddle.y and ball.y <= left_paddle.y + left_paddle.height:
             if ball.x - ball.radius <= left_paddle.x + left_paddle.width:
                 ball.x_vel *= -1
-                ball.y_vel = ball.MAX_VEL - random.randint(7)
+                ball.y_vel = ball.MAX_VEL - random.randint(0,7)
     
     else:
         if ball.y >= right_paddle.y and ball.y <= right_paddle.y + right_paddle.height:
             if ball.x + ball.radius >= right_paddle.x:
                 ball.x_vel *= -1
-                ball.y_vel = ball.MAX_VEL - random.randint(7)
+                ball.y_vel = ball.MAX_VEL - random.randint(0,7)
 
 def ball_reset(ball):
     if (ball.x  - ball.radius <= 0) or (ball.x + ball.radius >= WIDTH):
         ball.x = WIDTH//2
         ball.y = HEIGHT//2
         ball.x_vel *= -1
-        ball.y_vel = ball.MAX_VEL - random.randint(7)
+        ball.y_vel = ball.MAX_VEL - random.randint(0,7)
         if ball.x  - ball.radius <= 0:
             Player2_Score += 1
         elif ball.x  + ball.radius >= WIDTH:
@@ -133,7 +133,7 @@ def main():
     
 
     
-    ball =Ball(WIDTH//2,HEIGHT//2,BALL_RADIUS)
+    ball = Ball(WIDTH//2,HEIGHT//2,BALL_RADIUS)
 
     while run:
         clock.tick(FPS)
