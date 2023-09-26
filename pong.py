@@ -20,7 +20,7 @@ WINNING_SCORE = 10
 
 class Paddel:
     COLOR = WHITE
-    VEL = 10
+    VEL = 15
 
     def __init__(self, x, y, width,height):
         self.x = x
