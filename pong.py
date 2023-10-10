@@ -20,7 +20,7 @@ WINNING_SCORE = 10
 
 class Paddel:
     COLOR = WHITE
-    VEL = 15
+    VEL = 10
 
     def __init__(self, x, y, width,height):
         self.x = x
@@ -40,7 +40,7 @@ class Paddel:
 
 class Ball:
     COLOR = WHITE
-    MAX_VEL = 7
+    MAX_VEL = 5
 
 
     def __init__(self, x, y, radius):
@@ -116,9 +116,9 @@ def handle_paddle_movement(keys, left_paddle, right_paddle):
     if keys[pygame.K_s] and (left_paddle.y + left_paddle.VEL + left_paddle.height) <= HEIGHT:
         left_paddle.move(up=False)
         
-    if keys[pygame.K_UP] and (right_paddle.y - right_paddle.VEL) >= 0:
+    if keys[pygame.K_KP5] and (right_paddle.y - right_paddle.VEL) >= 0:
         right_paddle.move(up=True)
-    if keys[pygame.K_DOWN] and (right_paddle.y - right_paddle.VEL + right_paddle.height) <= HEIGHT:
+    if keys[pygame.K_KP2] and (right_paddle.y - right_paddle.VEL + right_paddle.height) <= HEIGHT:
         right_paddle.move(up=False)
 
 
